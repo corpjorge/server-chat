@@ -16,6 +16,12 @@ io.on('connection', (socket) => {
         socket.join(room);
         io.sockets.in(room).emit('chat', data);
     });
+
+    socket.on('documents', (data) => {
+        let room = data.room;
+        socket.join(room);
+        io.sockets.in(room).emit('documents', data);
+    });
 });
 
 server.listen(3000, () => {
